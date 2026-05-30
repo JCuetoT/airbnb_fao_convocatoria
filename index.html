@@ -302,27 +302,28 @@
                         <div class="w-12 h-12 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center mx-auto sm:mx-0">
                             <i data-lucide="search" class="w-6 h-6"></i>
                         </div>
-                        <h4 class="font-bold text-neutral-900 text-sm">1. Selecciona tu Actividad</h4>
-                        <p class="text-xs text-neutral-500 leading-relaxed">Explora nuestras tres experiencias de origen. Todas son operadas por las mismas familias propietarias.</p>
+                        <div class="h-1.5 bg-neutral-100 hidden sm:block rounded-full -mt-2 mb-2 translate-x-12 max-w-[120px]"></div>
+                        <h4 class="font-bold text-neutral-900 text-sm">1. Identifica la Aventura</h4>
+                        <p class="text-xs text-neutral-500 leading-relaxed">Explora la inmersión rural y las pasantías agrícolas exclusivas guiadas por anfitriones nativos certificados.</p>
                     </div>
                     <div class="space-y-3 text-center sm:text-left">
                         <div class="w-12 h-12 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center mx-auto sm:mx-0">
                             <i data-lucide="sliders" class="w-6 h-6"></i>
                         </div>
-                        <h4 class="font-bold text-neutral-900 text-sm">2. Personaliza tu Reserva</h4>
-                        <p class="text-xs text-neutral-500 leading-relaxed">Indica tus huéspedes, ajusta la cantidad de días de pernocta o añade opciones exclusivas como gajos premium o menús de gala.</p>
+                        <h4 class="font-bold text-neutral-900 text-sm">2. Agenda y Personaliza</h4>
+                        <p class="text-xs text-neutral-500 leading-relaxed">Selecciona tus fechas, cantidad de cupos disponibles y complementos tradicionales opcionales.</p>
                     </div>
                     <div class="space-y-3 text-center sm:text-left">
                         <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center mx-auto sm:mx-0">
                             <i data-lucide="credit-card" class="w-6 h-6"></i>
                         </div>
-                        <h4 class="font-bold text-neutral-900 text-sm">3. Transacción Segura</h4>
-                        <p class="text-xs text-neutral-500 leading-relaxed">Procesa la reserva mediante pasarela certificada con Airbnb Cover integrado en todos los planes.</p>
+                        <h4 class="font-bold text-neutral-900 text-sm">3. Confirmación Inmediata</h4>
+                        <p class="text-xs text-neutral-500 leading-relaxed">Procesa tu solicitud mediante canales encriptados SSL de extremo a extremo con Airbnb Cover.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-neutral-900 text-white rounded-3xl p-6 sm:p-10 space-y-6 border border-neutral-800">
+            <div class="hidden bg-neutral-900 text-white rounded-3xl p-6 sm:p-10 space-y-6 border border-neutral-800">
                 <div class="flex items-center gap-3">
                     <div class="w-8 h-8 rounded-full bg-airbnb-500 flex items-center justify-center text-white font-bold text-sm">
                         <i data-lucide="terminal" class="w-4 h-4"></i>
@@ -793,8 +794,7 @@
                 maxGuests: 4,
                 addons: {
                     opt1: { label: "Alimentación Premium (+ $25 c/u)", price: 25, perPerson: true, labelBase: "Gastronomía Exclusiva", desc: "Inclusión de snacks de tueste y postres típicos de la abuela." },
-                },
-                extraDayPrice: 70
+                }
             },
             campesino_un_dia: {
                 id: "campesino_un_dia",
@@ -811,8 +811,7 @@
                 addons: {
                     opt1: { label: "Bolsa de café (+ $30 c/u)", price: 30, perPerson: true, labelBase: "Bolsa de Café", desc: "Café excelso tostado y molido de la marca de la finca." },
                     opt2: { label: "Caja de Souvenirs Premium (+ $15 c/u)", price: 15, perPerson: true, labelBase: "Caja de Souvenirs Premium", desc: "Empaque oficial con muestra de café tostado, panela orgánica y cítricos de la huerta." }
-                },
-                extraDayPrice: 40
+                }
             }
         };
 
@@ -938,6 +937,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // --- ACTUALIZACIÓN DE INTERFAZ GESTIONADA DE FORMA CONTROLADA ---
         function showCheckoutMode() {
             document.getElementById('browse-mode-view').classList.add('hidden');
             document.getElementById('checkout-mode-view').classList.remove('hidden');
@@ -974,7 +974,9 @@
                 const daysBlock = document.getElementById('paraise-days-block');
                 if (selectedExp.id === 'cafe_completo' || selectedExp.id === 'campesino_un_dia') {
                     daysBlock.classList.remove('hidden');
-                    document.getElementById('paraise-days-desc').innerText = `Día adicional cuesta $${selectedExp.extraDayPrice} USD`;
+                    if (selectedExp.extraDayPrice) {
+                        document.getElementById('paraise-days-desc').innerText = `Día adicional cuesta $${selectedExp.extraDayPrice} USD`;
+                    }
                 } else {
                     daysBlock.classList.add('hidden');
                 }
@@ -984,10 +986,14 @@
                 document.getElementById('addon-1-desc').innerText = selectedExp.addons.opt1.desc;
                 document.getElementById('addon-1-badge-price').innerText = `+$${selectedExp.addons.opt1.price} USD`;
 
+                const addon2Container = document.getElementById('checkout-addon-2').parentElement.parentElement;
                 if (selectedExp.addons.opt2) {
+                    addon2Container.classList.remove('hidden');
                     document.getElementById('addon-2-title').innerText = selectedExp.addons.opt2.labelBase;
                     document.getElementById('addon-2-desc').innerText = selectedExp.addons.opt2.desc;
                     document.getElementById('addon-2-badge-price').innerText = `+$${selectedExp.addons.opt2.price} USD`;
+                } else {
+                    addon2Container.classList.add('hidden');
                 }
 
                 // Guest limit text
@@ -1124,9 +1130,15 @@
             updateCheckoutBadge();
         }
 
+        // --- SISTEMA DE SOUVENIRS INTEGRADO DE FORMA SEGURA ---
         function updateCheckoutBadge() {
-            const inputVal = document.getElementById('overol-name-input').value.trim();
-            const sizeVal = document.getElementById('overol-size-select').value;
+            const nameInput = document.getElementById('overol-name-input');
+            const sizeSelect = document.getElementById('overol-size-select');
+            
+            if (!nameInput || !sizeSelect) return;
+
+            const inputVal = nameInput.value.trim();
+            const sizeVal = sizeSelect.value;
 
             const badgePreview = document.getElementById('overol-badge-preview');
             const sizeBadge = document.getElementById('overol-size-badge');
@@ -1281,10 +1293,9 @@
         function clearQueryString() {
             window.history.pushState({}, document.title, window.location.pathname);
             document.getElementById('integration-banner').classList.add('hidden');
-            showBrowseMode(); // Redirección limpia al catálogo principal
+            showBrowseMode(); 
         }
 
-        // FUNCIÓN COMPLETADA: Muestra la notificación dinámica flotante sin romper código
         function showCustomNotification(message, type = "success") {
             const noticeDiv = document.createElement('div');
             noticeDiv.className = `fixed bottom-5 right-5 z-50 p-4 rounded-2xl shadow-xl flex items-center gap-3 border transition-all transform translate-y-5 opacity-0 ${
