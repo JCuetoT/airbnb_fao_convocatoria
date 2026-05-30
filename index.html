@@ -1,0 +1,1392 @@
+
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbnb Experiencias - Magdalena, Colombia</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        airbnb: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            500: '#ff385c', // Color oficial de Airbnb
+                            600: '#e61e4d',
+                            700: '#ca163f',
+                            800: '#9f1239',
+                        },
+                        jungle: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & Lucide Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .airbnb-shadow {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
+        .scroll-hidden::-webkit-scrollbar {
+            display: none;
+        }
+        .scroll-hidden {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-neutral-50 text-neutral-900 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- TOP NOTICE: CUSTOMER PROTECTION INFO -->
+    <div class="bg-neutral-950 text-white text-xs sm:text-sm font-normal py-2.5 px-4 text-center sticky top-0 z-50 shadow-md flex items-center justify-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-airbnb-500 animate-pulse"></span>
+        <span><strong>Airbnb Cover Incluido:</strong> Protección garantizada contra cancelaciones del anfitrión y asistencia médica en campo 24/7.</span>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="bg-white border-b border-neutral-200 sticky top-10 sm:top-9 z-40 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" onclick="showBrowseMode()" class="flex items-center gap-2 text-airbnb-500 hover:text-airbnb-600 transition-colors">
+                <svg class="w-8 h-8 fill-current" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 1c-2.007 0-3.61.12-5.074.354-2.188.351-3.9 1.436-5.12 3.236-1.123 1.66-1.527 3.651-1.196 5.923.491 3.377 2.453 7.373 5.834 11.88l.456.602a94.135 94.135 0 0 0 4.14 5.253l.354.43c.273.33.514.613.714.843l.135.153a1.503 1.503 0 0 0 2.115-.002l.142-.158c.2-.23.441-.513.715-.843l.354-.43a95.341 95.341 0 0 0 4.138-5.25l.458-.605c3.38-4.507 5.342-8.503 5.833-11.88.332-2.272-.072-4.263-1.195-5.923-1.22-1.8-2.932-2.885-5.121-3.236C19.61 1.12 18.007 1 16 1zm0 2c1.888 0 3.387.114 4.756.334 1.744.28 2.977 1.085 3.824 2.333.844 1.25 1.137 2.76.877 4.545-.425 2.924-2.176 6.586-5.276 10.725l-.46.606a94.498 94.498 0 0 1-4.085 5.187l-.364.444c-.254.307-.48.571-.672.788-.192-.217-.418-.481-.672-.788l-.364-.444a93.28 93.28 0 0 1-4.086-5.19l-.458-.603c-3.1-4.139-4.851-7.801-5.276-10.725-.26-1.785.033-3.295.877-4.545.847-1.248 2.08-2.053 3.824-2.333C12.613 3.114 14.112 3 16 3zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm.05 15.65h-.1l-.034.022c-.675.437-1.478.728-2.35.82a6.993 6.993 0 0 1-1.954-.153 1 1 0 1 0-.442 1.95 8.985 8.985 0 0 0 2.513.197c1.196-.126 2.311-.53 3.257-1.163l.11-.073a1 1 0 0 0-1.001-1.603z"/>
+                </svg>
+                <div class="flex flex-col">
+                    <span class="font-extrabold text-xl tracking-tight leading-none text-neutral-900">airbnb</span>
+                    <span class="text-[10px] uppercase font-bold tracking-widest text-airbnb-500">experiencias</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-neutral-600">
+                <a href="#" onclick="showBrowseMode()" class="hover:text-black py-2 border-b-2 border-transparent hover:border-black transition-all">Explorar Actividades</a>
+                <a href="#como-funciona" class="hover:text-neutral-950 py-2 border-b-2 border-transparent hover:border-black transition-all">¿Cómo funciona?</a>
+                <a href="#seguridad" class="hover:text-neutral-950 py-2 border-b-2 border-transparent hover:border-black transition-all">Garantía y Sostenibilidad</a>
+            </nav>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-4">
+                <span class="hidden lg:inline-flex items-center gap-1.5 text-xs font-semibold bg-emerald-50 text-emerald-800 px-3 py-1.5 rounded-full border border-emerald-100">
+                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-ping"></span>
+                    Cupos de Temporada Activos
+                </span>
+                <button onclick="showBrowseMode()" class="text-sm font-semibold border border-neutral-300 hover:border-black px-4 py-2 rounded-full transition-all bg-white">
+                    Catálogo
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="flex-grow">
+        
+        <!-- ==================== BROWSE MODE (CATALOG) ==================== -->
+        <div id="browse-mode-view" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+            
+            <!-- Real Airbnb Destination Banner -->
+            <div class="bg-gradient-to-r from-emerald-800 via-jungle-900 to-emerald-950 rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row lg:items-center justify-between gap-8 text-white shadow-xl relative overflow-hidden">
+                <div class="absolute -right-20 -top-20 w-80 h-80 bg-emerald-600 rounded-full opacity-20 blur-3xl"></div>
+                <div class="space-y-4 max-w-2xl relative z-10">
+                    <span class="text-xs uppercase tracking-wider text-emerald-200 font-bold bg-emerald-700/50 px-3 py-1 rounded-full border border-emerald-500/30">Inmersión Magdalena</span>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-none">Experiencias Agroecológicas Únicas en Colombia</h1>
+                    <p class="text-sm sm:text-base text-emerald-100 font-light max-w-xl">
+                        Interactúa de forma real y directa con la tierra. Vive las dinámicas bananeras y cafeteras del Magdalena de la mano de familias locales con un impacto 100% sostenible.
+                    </p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/15 shrink-0 lg:max-w-xs w-full relative z-10 space-y-2">
+                    <span class="block text-xs font-bold text-emerald-300 uppercase tracking-widest text-center">TURISMO DE ORIGEN PURO</span>
+                    <p class="text-xs text-center text-emerald-50/90 leading-relaxed">Apoyo directo garantizado. El valor neto financia la soberanía alimentaria, paneles solares y microcentros de producción familiar.</p>
+                </div>
+            </div>
+
+            <!-- Categories bar mockup -->
+            <div class="flex items-center gap-6 overflow-x-auto pb-4 border-b border-neutral-200 scroll-hidden">
+                <button class="flex flex-col items-center gap-2 border-b-2 border-black pb-2 text-black shrink-0 font-semibold text-sm">
+                    <i data-lucide="sprout" class="w-5 h-5"></i>
+                    <span>Tours de Origen</span>
+                </button>
+                <button class="flex flex-col items-center gap-2 border-b-2 border-transparent pb-2 text-neutral-500 hover:text-black hover:border-neutral-300 shrink-0 font-medium text-sm transition-all">
+                    <i data-lucide="banana" class="w-5 h-5"></i>
+                    <span>Finca Bananera</span>
+                </button>
+                <button class="flex flex-col items-center gap-2 border-b-2 border-transparent pb-2 text-neutral-500 hover:text-black hover:border-neutral-300 shrink-0 font-medium text-sm transition-all">
+                    <i data-lucide="coffee" class="w-5 h-5"></i>
+                    <span>Pasantía de Café</span>
+                </button>
+                <button class="flex flex-col items-center gap-2 border-b-2 border-transparent pb-2 text-neutral-500 hover:text-black hover:border-neutral-300 shrink-0 font-medium text-sm transition-all">
+                    <i data-lucide="mountain" class="w-5 h-5"></i>
+                    <span>Sierra Nevada</span>
+                </button>
+            </div>
+
+            <!-- Experience Grid (3 Cards) -->
+            <div class="space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-2xl font-extrabold text-neutral-900">Actividades agro-culturales disponibles</h2>
+                        <p class="text-sm text-neutral-500">Inmersión vivencial, técnica y gastronómica con anfitriones certificados.</p>
+                    </div>
+                    <span class="text-xs font-bold bg-neutral-100 text-neutral-800 border border-neutral-200 px-3.5 py-1.5 rounded-full shrink-0 self-start">3 Circuitos Exclusivos</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <!-- CARD 1: DEL CAMPO AL MUNDO (BANANO - FINCA LA DOS) -->
+                    <div class="bg-white rounded-2xl overflow-hidden border border-neutral-200 shadow-sm hover:shadow-md transition-all flex flex-col group">
+                        <div class="relative h-60 overflow-hidden shrink-0">
+                            <img src="img\desmane_finca_la_dos.webp" 
+                                 alt="Finca La Dos" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3 left-3 bg-white/95 backdrop-blur-md text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full text-airbnb-700 shadow-sm flex items-center gap-1 border border-neutral-100">
+                                <i data-lucide="award" class="w-3.5 h-3.5"></i> Lunes de Cosecha
+                            </div>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="font-bold uppercase tracking-wider text-green-700 bg-green-50 px-2 py-0.5 rounded">Finca la Dos</span>
+                                    <span class="flex items-center gap-1 font-semibold text-neutral-800">
+                                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i> 4.98 (72)
+                                    </span>
+                                </div>
+                                <h3 class="font-bold text-lg text-neutral-900 leading-snug group-hover:text-airbnb-500 transition-colors">
+                                    Del Campo al Mundo: Proceso real del Banano de Exportación
+                                </h3>
+                                <p class="text-xs text-neutral-600 font-light line-clamp-3">
+                                    Póngase las botas en la Finca la Dos, empuje el cablevía con los garrucheros y saboree el banano madurado en planta en un circuito interactivo de 6 horas. Incluye overol, sombrero personalizado de regalo y almuerzo criollo campesino.
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-neutral-100 flex items-center justify-between">
+                                <div>
+                                    <span class="block text-[10px] uppercase font-bold text-neutral-400 tracking-wider">Inversión Elite</span>
+                                    <span class="text-lg font-extrabold text-neutral-900">$250 USD <span class="text-xs text-neutral-500 font-normal">/ pers</span></span>
+                                </div>
+                                <button onclick="selectExperience('banano')" class="bg-airbnb-500 hover:bg-airbnb-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm hover:shadow transition-all flex items-center gap-1.5">
+                                    Reservar <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 2: COSECHA TU PROPIO CAFE (FINCA EL PARAISO) -->
+                    <div class="bg-white rounded-2xl overflow-hidden border border-neutral-200 shadow-sm hover:shadow-md transition-all flex flex-col group">
+                        <div class="relative h-60 overflow-hidden shrink-0">
+                            <img src="img\Elbas_Finca_El_Paraiso.jpg" 
+                                 alt="Cosecha Cafe" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3 left-3 bg-amber-950/90 backdrop-blur-md text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full text-amber-200 shadow-sm flex items-center gap-1 border border-amber-800/30">
+                                <i data-lucide="coffee" class="w-3.5 h-3.5"></i> Pasantía Técnico-Cultural
+                            </div>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-2 py-0.5 rounded">Finca El Paraíso</span>
+                                    <span class="flex items-center gap-1 font-semibold text-neutral-800">
+                                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i> 4.99 (88)
+                                    </span>
+                                </div>
+                                <h3 class="font-bold text-lg text-neutral-900 leading-snug group-hover:text-airbnb-500 transition-colors">
+                                    Cosecha tu Propio Café: Pasantía Completa de 7 Días
+                                </h3>
+                                <p class="text-xs text-neutral-600 font-light line-clamp-3">
+                                    Diseñado para Coffee Geeks y Slowmads. Co-produce tu propio lote especial a través de 6 módulos técnicos de alta intensidad práctica. Incluye 6 noches de hospedaje conectado con WiFi de alta velocidad, alimentación completa y 2 Kg de café de autor.
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-neutral-100 flex items-center justify-between">
+                                <div>
+                                    <span class="block text-[10px] uppercase font-bold text-neutral-400 tracking-wider">Ciclo Completo</span>
+                                    <span class="text-lg font-extrabold text-neutral-900">$500 USD <span class="text-xs text-neutral-500 font-normal">/ base</span></span>
+                                </div>
+                                <button onclick="selectExperience('cafe_completo')" class="bg-airbnb-500 hover:bg-airbnb-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm hover:shadow transition-all flex items-center gap-1.5">
+                                    Reservar <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 3: UN DIA EN LA VIDA DEL CAMPESINO (FINCA EL PARAISO) -->
+                    <div class="bg-white rounded-2xl overflow-hidden border border-neutral-200 shadow-sm hover:shadow-md transition-all flex flex-col group">
+                        <div class="relative h-60 overflow-hidden shrink-0">
+                            <img src="img\Finca_Instalaciones.jpeg" 
+                                 alt="Vida Campesina" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3 left-3 bg-emerald-950/90 backdrop-blur-md text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full text-emerald-300 shadow-sm flex items-center gap-1 border border-emerald-800/30">
+                                <i data-lucide="home" class="w-3.5 h-3.5"></i> Co-Habitación Rural
+                            </div>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">Finca El Paraíso</span>
+                                    <span class="flex items-center gap-1 font-semibold text-neutral-800">
+                                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i> 4.95 (54)
+                                    </span>
+                                </div>
+                                <h3 class="font-bold text-lg text-neutral-900 leading-snug group-hover:text-airbnb-500 transition-colors">
+                                    Un Día en la Vida del Campesino de la Sierra Nevada
+                                </h3>
+                                <p class="text-xs text-neutral-600 font-light line-clamp-3">
+                                    Inmersión de 24 horas (2 días / 1 noche) libre de estrés. Aprende sobre agroecología, recolecta cítricos, plátanos y yuca, pesca tilapias y cocina en fogón de leña. Incluye hospedaje con WiFi y traslados privados de ida y vuelta en vehículo 4x4 campero.
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-neutral-100 flex items-center justify-between">
+                                <div>
+                                    <span class="block text-[10px] uppercase font-bold text-neutral-400 tracking-wider">Inmersión Express</span>
+                                    <span class="text-lg font-extrabold text-neutral-900">$200 USD <span class="text-xs text-neutral-500 font-normal">/ plan</span></span>
+                                </div>
+                                <button onclick="selectExperience('campesino_un_dia')" class="bg-airbnb-500 hover:bg-airbnb-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm hover:shadow transition-all flex items-center gap-1.5">
+                                    Reservar <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- DESCRIPTIVE TABS / SECTIONS (Dynamic view options) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white border border-neutral-200 rounded-3xl p-6 sm:p-10 shadow-sm">
+                <div class="space-y-6">
+                    <span class="text-xs font-bold uppercase tracking-wider text-airbnb-600 bg-airbnb-50 px-3 py-1 rounded-full">Detalles del Circuito Bananero</span>
+                    <h3 class="text-2xl font-extrabold text-neutral-950 leading-tight">El Circuito del Racimo: <br>Un día real en Finca La Dos</h3>
+                    <p class="text-neutral-600 text-sm font-light leading-relaxed">
+                        Esta no es una caminata contemplativa; es un cambio de roles real. Serás Inspector de Fruta midiendo calibración, te pondrás el overol de drill de marca propia de la finca, cortarás el racimo con la fuerza de un Puya y arrastrarás los frutos en la garrucha (el místico sistema de cablevías agrícola).
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="border-l-4 border-emerald-500 pl-3">
+                            <span class="block text-xs font-bold text-neutral-400">01. INDUCCIÓN & SOLAR</span>
+                            <span class="text-xs text-neutral-700">Calibración de la fruta y desayuno campesino de cayeye.</span>
+                        </div>
+                        <div class="border-l-4 border-emerald-500 pl-3">
+                            <span class="block text-xs font-bold text-neutral-400">02. EL CORTE</span>
+                            <span class="text-xs text-neutral-700">Punto crítico de fuerza en plantación real y fotografía.</span>
+                        </div>
+                        <div class="border-l-4 border-emerald-500 pl-3">
+                            <span class="block text-xs font-bold text-neutral-400">03. CABLEVÍA O GARRUCHA</span>
+                            <span class="text-xs text-neutral-700">Arrastre por aire de los racimos cosechados.</span>
+                        </div>
+                        <div class="border-l-4 border-emerald-500 pl-3">
+                            <span class="block text-xs font-bold text-neutral-400">04. ARTESANÍA DEL EMPAQUE</span>
+                            <span class="text-xs text-neutral-700">Lavado, saneamiento, etiquetado y marcado textil.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-neutral-900 rounded-2xl p-6 text-white flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute -right-20 -bottom-20 w-60 h-60 bg-airbnb-500/10 rounded-full blur-2xl"></div>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="award" class="text-amber-400 w-6 h-6"></i>
+                            <span class="text-xs uppercase font-bold tracking-widest text-amber-300">Trofeo Físico de Regalo</span>
+                        </div>
+                        <h4 class="text-xl font-bold">Sombrero de Paja Marcado</h4>
+                        <p class="text-xs text-neutral-300 font-light leading-relaxed">
+                            La mancha de la savia del banano es imborrable. Te equipamos con un overol industrial de drill de alta resistencia y calzado de tracción esterilizado. Al finalizar, te llevarás el <strong>Sombrero de Paja tradicional</strong> marcado con tu propio apellido mediante el sello textil oficial en la empacadora.
+                        </p>
+                    </div>
+                    <div class="border-t border-white/10 pt-4 mt-6 flex items-center justify-between">
+                        <span class="text-[10px] text-neutral-400">OPERACIÓN AGRÍCOLA • ZONA BANANERA</span>
+                        <span class="text-xs font-mono font-bold text-amber-300">FINCA LA DOS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REAL HOW-IT-WORKS SECTION -->
+            <div id="como-funciona" class="bg-white border border-neutral-200 rounded-3xl p-6 sm:p-10 space-y-8">
+                <div class="text-center max-w-xl mx-auto space-y-2">
+                    <h3 class="text-2xl font-extrabold text-neutral-900">¿Cómo funcionan las Experiencias de Airbnb?</h3>
+                    <p class="text-sm text-neutral-500">Dejamos atrás los paseos pasivos para involucrarte directamente en los oficios locales auténticos de la región.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="space-y-3 text-center sm:text-left">
+                        <div class="w-12 h-12 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center mx-auto sm:mx-0">
+                            <i data-lucide="search" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-neutral-900 text-sm">1. Selecciona tu Actividad</h4>
+                        <p class="text-xs text-neutral-500 leading-relaxed">Explora nuestras tres experiencias de origen. Todas son operadas por las mismas familias propietarias.</p>
+                    </div>
+                    <div class="space-y-3 text-center sm:text-left">
+                        <div class="w-12 h-12 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center mx-auto sm:mx-0">
+                            <i data-lucide="sliders" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-neutral-900 text-sm">2. Personaliza tu Reserva</h4>
+                        <p class="text-xs text-neutral-500 leading-relaxed">Indica tus huéspedes, ajusta la cantidad de días de pernocta o añade opciones exclusivas como gajos premium o menús de gala.</p>
+                    </div>
+                    <div class="space-y-3 text-center sm:text-left">
+                        <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center mx-auto sm:mx-0">
+                            <i data-lucide="credit-card" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-neutral-900 text-sm">3. Transacción Segura</h4>
+                        <p class="text-xs text-neutral-500 leading-relaxed">Procesa la reserva mediante pasarela certificada con Airbnb Cover integrado en todos los planes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INTEGRATION DEVELOPER PANEL (How to link) -->
+            <div class="bg-neutral-900 text-white rounded-3xl p-6 sm:p-10 space-y-6 border border-neutral-800">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-airbnb-500 flex items-center justify-center text-white font-bold text-sm">
+                        <i data-lucide="terminal" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold">Generador de Enlaces para Landings de Fincas</h3>
+                        <p class="text-xs text-neutral-400">Usa esta herramienta interactiva para construir el link de checkout pre-configurado desde las páginas individuales.</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
+                    <div>
+                        <label class="block text-[10px] text-neutral-400 uppercase font-bold mb-1">Experiencia</label>
+                        <select id="gen-exp" onchange="updateGeneratedUrl()" class="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-white">
+                            <option value="banano">Finca La Dos - Banano ($250)</option>
+                            <option value="cafe_completo">Paraíso - Cosecha Café ($500)</option>
+                            <option value="campesino_un_dia">Paraíso - Vida Campesina ($200)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-neutral-400 uppercase font-bold mb-1">Huéspedes</label>
+                        <input type="number" id="gen-guests" value="2" min="1" max="8" oninput="updateGeneratedUrl()" class="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2 text-white">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-neutral-400 uppercase font-bold mb-1">Días de Estancia (Paraíso)</label>
+                        <input type="number" id="gen-days" value="0" min="0" max="15" oninput="updateGeneratedUrl()" class="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2 text-white">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-neutral-400 uppercase font-bold mb-1">Adicionales</label>
+                        <div class="space-y-1">
+                            <label class="flex items-center gap-1.5 cursor-pointer">
+                                <input type="checkbox" id="gen-addon-1" onchange="updateGeneratedUrl()" class="rounded bg-neutral-800 text-airbnb-500 border-neutral-700">
+                                <span>Adicional 1 (Gajos/Extra)</span>
+                            </label>
+                            <label class="flex items-center gap-1.5 cursor-pointer">
+                                <input type="checkbox" id="gen-addon-2" onchange="updateGeneratedUrl()" class="rounded bg-neutral-800 text-airbnb-500 border-neutral-700">
+                                <span>Adicional 2 (Menú 5 Tiempos)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-neutral-950 p-4 rounded-xl border border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <code id="generated-url-code" class="text-amber-400 text-xs font-mono break-all select-all">index.html?exp=banano&guests=2</code>
+                    <div class="flex gap-2 shrink-0 w-full sm:w-auto">
+                        <button onclick="copyGeneratedLink()" class="flex-1 sm:flex-initial bg-neutral-800 hover:bg-neutral-700 text-white font-bold text-xs px-4 py-2.5 rounded-lg flex items-center justify-center gap-2 transition-colors">
+                            <i data-lucide="copy" class="w-4 h-4"></i> Copiar
+                        </button>
+                        <button onclick="testGeneratedLink()" class="flex-1 sm:flex-initial bg-airbnb-500 hover:bg-airbnb-600 text-white font-bold text-xs px-4 py-2.5 rounded-lg flex items-center justify-center gap-2 transition-colors">
+                            <i data-lucide="external-link" class="w-4 h-4"></i> Probar Checkout
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==================== DETAILED CHECKOUT MODE ==================== -->
+        <div id="checkout-mode-view" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 hidden space-y-6">
+            
+            <!-- Integration Welcome Indicator (Shows when coming from landing query) -->
+            <div id="integration-banner" class="bg-emerald-50 border border-emerald-100 text-emerald-950 px-5 py-4 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm hidden">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0">
+                        <i data-lucide="check" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <span class="block text-xs font-bold uppercase tracking-wider text-emerald-800">Detalles de Plan Cargados con Éxito</span>
+                        <p class="text-sm font-medium">Hemos pre-configurado la experiencia y los complementos según lo seleccionado en la Landing Page.</p>
+                    </div>
+                </div>
+                <button onclick="clearQueryString()" class="text-xs bg-emerald-100 hover:bg-emerald-200 text-emerald-950 font-semibold px-4 py-2 rounded-xl shrink-0 transition-colors">
+                    Ver otras opciones de Magdalena
+                </button>
+            </div>
+
+            <!-- Back navigation -->
+            <button onclick="showBrowseMode()" class="inline-flex items-center gap-2 text-sm font-semibold text-neutral-600 hover:text-black transition-colors py-2">
+                <i data-lucide="chevron-left" class="w-5 h-5"></i> Volver a Explorar Experiencias
+            </button>
+
+            <!-- Checkout Grid Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                
+                <!-- LEFT SIDE: BILLING FORM & GUEST INFO (7 cols) -->
+                <div class="lg:col-span-7 space-y-8">
+                    
+                    <!-- Progress Step -->
+                    <div class="border-b border-neutral-200 pb-6">
+                        <h2 class="text-3xl font-extrabold text-neutral-900 tracking-tight">Solicitar Reserva Segura</h2>
+                        <p class="text-sm text-neutral-500 mt-1">Socio de confianza oficial de Fincas Magdalena.</p>
+                    </div>
+
+                    <!-- Experience Details Summary Block -->
+                    <div class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm flex flex-col sm:flex-row gap-5 items-center">
+                        <div class="w-24 h-24 rounded-xl overflow-hidden shrink-0 shadow-inner">
+                            <img id="checkout-exp-img" src="" alt="Reserva" class="w-full h-full object-cover">
+                        </div>
+                        <div class="space-y-1 w-full text-center sm:text-left">
+                            <span id="checkout-exp-category" class="text-[10px] uppercase font-bold text-airbnb-600 tracking-wider">Categoría</span>
+                            <h3 id="checkout-exp-title" class="font-bold text-lg text-neutral-900 leading-snug">Título de la Experiencia</h3>
+                            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs text-neutral-500 pt-1">
+                                <span class="flex items-center gap-1">
+                                    <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i> <span id="checkout-exp-rating">4.98</span>
+                                </span>
+                                <span class="flex items-center gap-1">
+                                    <i data-lucide="clock" class="w-3.5 h-3.5"></i> <span id="checkout-exp-duration">6 Horas</span>
+                                </span>
+                                <span class="flex items-center gap-1">
+                                    <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> <span id="checkout-exp-location">Magdalena</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Traveler Contact Information -->
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-2 border-b border-neutral-200 pb-2">
+                            <i data-lucide="user" class="w-5 h-5 text-airbnb-500"></i>
+                            <h3 class="font-extrabold text-lg text-neutral-900">1. Datos del Viajero Principal</h3>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-neutral-600 uppercase mb-1">Nombre Completo *</label>
+                                <input type="text" id="traveler-name" placeholder="Ej: Juan Pérez" class="w-full bg-white border border-neutral-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-airbnb-500 transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-neutral-600 uppercase mb-1">Correo Electrónico *</label>
+                                <input type="email" id="traveler-email" placeholder="Ej: juan.perez@correo.com" class="w-full bg-white border border-neutral-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-airbnb-500 transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-neutral-600 uppercase mb-1">Teléfono o WhatsApp *</label>
+                                <input type="tel" id="traveler-phone" placeholder="Ej: +57 300 123 4567" class="w-full bg-white border border-neutral-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-airbnb-500 transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-neutral-600 uppercase mb-1">Fecha de la Experiencia *</label>
+                                <input type="date" id="traveler-date" class="w-full bg-white border border-neutral-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-airbnb-500 transition-all">
+                                <p id="monday-special-warning" class="text-xs text-rose-500 font-semibold mt-1 hidden">Atención: Este proceso agrícola opera exclusivamente los lunes (día de cosecha).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Customizer options for Overol & Size (Shows only for Garrucha / Banano experience) -->
+                    <div id="garrucha-customizer-block" class="bg-neutral-100 border border-neutral-200 rounded-2xl p-5 space-y-4 hidden">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="shirt" class="text-amber-600 w-5 h-5"></i>
+                            <h4 class="font-bold text-sm text-neutral-900">Personalización del Sello en Sombrero</h4>
+                        </div>
+                        <p class="text-xs text-neutral-600 leading-relaxed font-light">
+                            Te equipamos con un overol premium de drill y calzado especializado higienizado. Indica a continuación el nombre para sellar en tu Sombrero tradicional de paja (trofeo físico que te llevarás a casa):
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-[10px] font-bold text-neutral-500 uppercase mb-1">Inscripción Oficial (Apellido/Nombre)</label>
+                                <input type="text" id="overol-name-input" oninput="updateCheckoutBadge()" placeholder="Ej: AVENTURERO" class="bg-white border border-neutral-300 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-amber-500 w-full font-mono uppercase">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-neutral-500 uppercase mb-1">Talla del overol</label>
+                                <select id="overol-size-select" onchange="updateCheckoutBadge()" class="bg-white border border-neutral-300 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-amber-500 w-full">
+                                    <option value="S">Talla S</option>
+                                    <option value="M" selected>Talla M</option>
+                                    <option value="L">Talla L</option>
+                                    <option value="XL">Talla XL</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Virtual Badge Stamp Visual -->
+                        <div class="p-4 bg-neutral-950 rounded-xl flex items-center justify-between gap-4 border border-neutral-800 text-white">
+                            <div class="space-y-1 font-sans">
+                                <span class="block text-[8px] tracking-widest text-neutral-400 uppercase font-bold">Sello Impreso en su Sombrero</span>
+                                <span id="overol-badge-preview" class="block text-sm font-extrabold tracking-wider text-amber-300 uppercase font-mono">VIAJERO AVENTURERO</span>
+                                <span class="block text-[8px] text-neutral-500">SOUVENIR FINCA LA DOS • ZONA BANANERA • COLOMBIA</span>
+                            </div>
+                            <span id="overol-size-badge" class="bg-white/10 text-white text-[10px] font-bold px-2 py-1 rounded border border-white/20">Talla M</span>
+                        </div>
+                    </div>
+
+                    <!-- Payment Information Setup -->
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between border-b border-neutral-200 pb-2">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="credit-card" class="w-5 h-5 text-airbnb-500"></i>
+                                <h3 class="font-extrabold text-lg text-neutral-900">2. Información de Pago Cifrado</h3>
+                            </div>
+                            <div class="flex items-center gap-1.5 shrink-0">
+                                <img src="https://cdnjs.cloudflare.com/ajax/libs/payment-font/1.3.0/png/flat/visa.png" alt="Visa" class="h-4">
+                                <img src="https://cdnjs.cloudflare.com/ajax/libs/payment-font/1.3.0/png/flat/mastercard.png" alt="Mastercard" class="h-4">
+                                <img src="https://cdnjs.cloudflare.com/ajax/libs/payment-font/1.3.0/png/flat/amex.png" alt="Amex" class="h-4">
+                            </div>
+                        </div>
+
+                        <!-- Card Inputs -->
+                        <div class="bg-neutral-100 p-5 rounded-2xl border border-neutral-200/80 space-y-4">
+                            <div>
+                                <label class="block text-[10px] font-bold text-neutral-500 uppercase mb-1">Nombre en la Tarjeta *</label>
+                                <input type="text" id="card-holder" placeholder="Ej: Juan Pérez" class="w-full bg-white border border-neutral-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-airbnb-500 transition-all">
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="relative">
+                                    <label class="block text-[10px] font-bold text-neutral-500 uppercase mb-1">Número de Tarjeta *</label>
+                                    <input type="text" id="card-number" oninput="detectCardType(this)" placeholder="4000 1234 5678 9010" maxlength="19" class="w-full bg-white border border-neutral-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-airbnb-500 transition-all font-mono">
+                                    <div class="absolute right-3.5 bottom-2.5 text-neutral-400" id="card-icon-placeholder">
+                                        <i data-lucide="credit-card" class="w-5 h-5"></i>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="block text-[10px] font-bold text-neutral-500 uppercase mb-1">Expiración *</label>
+                                        <input type="text" id="card-expiry" placeholder="MM/AA" maxlength="5" class="w-full bg-white border border-neutral-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-airbnb-500 transition-all text-center font-mono">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[10px] font-bold text-neutral-500 uppercase mb-1">CVC / CVV *</label>
+                                        <input type="password" id="card-cvc" placeholder="•••" maxlength="4" class="w-full bg-white border border-neutral-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-airbnb-500 transition-all text-center font-mono">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT SIDE: BOOKING PRICE CARD (5 cols) -->
+                <div class="lg:col-span-5 bg-white border border-neutral-200 rounded-3xl p-6 sm:p-8 airbnb-shadow space-y-6 sticky top-28">
+                    
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-neutral-500 font-bold uppercase tracking-widest">Resumen de Cotización</span>
+                            <div class="flex items-baseline gap-1 mt-1">
+                                <span id="aside-price-total" class="text-3xl font-extrabold text-neutral-900">$500</span>
+                                <span id="selected-currency-label" class="text-neutral-500 font-semibold text-sm">USD</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Currency Selector -->
+                        <div class="flex flex-col items-end">
+                            <label class="text-[9px] font-bold text-neutral-400 uppercase mb-1">Ver en mi Moneda</label>
+                            <select id="currency-select" onchange="calculateCheckoutTotal()" class="bg-neutral-100 border border-neutral-300 rounded-lg px-2 py-1 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-airbnb-500">
+                                <option value="USD">USD ($)</option>
+                                <option value="COP">COP (Col$)</option>
+                                <option value="EUR">EUR (€)</option>
+                                <option value="MXN">MXN (Mex$)</option>
+                                <option value="CAD">CAD (Can$)</option>
+                            </select>
+                            <span class="text-[8px] text-neutral-400 mt-1">Tasa de cambio en tiempo real</span>
+                        </div>
+                    </div>
+
+                    <!-- Configurable Selectors Inside Checkout -->
+                    <div class="space-y-4 pt-4 border-t border-neutral-100">
+                        
+                        <!-- Guest Changer Counter -->
+                        <div class="flex justify-between items-center bg-neutral-50 border border-neutral-200 rounded-2xl p-3.5">
+                            <div>
+                                <span class="block text-xs font-bold text-neutral-700 uppercase">Cupos / Viajeros</span>
+                                <span id="checkout-guest-helper" class="text-[10px] text-neutral-400">Capacidad limitada</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <button onclick="changeCheckoutGuests(-1)" class="w-8 h-8 rounded-full bg-white border border-neutral-300 text-neutral-700 flex items-center justify-center hover:bg-neutral-50 font-bold transition-all shadow-sm">-</button>
+                                <span id="checkout-guest-count" class="font-extrabold text-neutral-900 w-4 text-center text-sm">2</span>
+                                <button onclick="changeCheckoutGuests(1)" class="w-8 h-8 rounded-full bg-white border border-neutral-300 text-neutral-700 flex items-center justify-center hover:bg-neutral-50 font-bold transition-all shadow-sm">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Extra Days (Visible only for Finca el Paraíso) -->
+                        <div id="paraise-days-block" class="bg-amber-50/50 border border-amber-100 rounded-2xl p-3.5 space-y-2 hidden">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="block text-xs font-bold text-amber-900 uppercase">Días Adicionales</span>
+                                    <span id="paraise-days-desc" class="text-[9px] text-amber-700 font-medium">Extiende tu pasantía o co-habitación</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <button onclick="changeParaiseDays(-1)" class="w-8 h-8 rounded-full bg-white border border-amber-200 text-amber-800 flex items-center justify-center hover:bg-amber-100 font-bold transition-all shadow-sm">-</button>
+                                    <span id="paraise-days-count" class="font-extrabold text-amber-950 w-4 text-center text-sm">0</span>
+                                    <button onclick="changeParaiseDays(1)" class="w-8 h-8 rounded-full bg-white border border-amber-200 text-amber-800 flex items-center justify-center hover:bg-amber-100 font-bold transition-all shadow-sm">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Addon Checks -->
+                        <div class="space-y-3 pt-2" id="addon-section-container">
+                            <span class="block text-[10px] font-bold text-neutral-500 uppercase tracking-wider">Servicios Opcionales</span>
+                            
+                            <!-- Checkbox Addon 1 (Llevar Gajos / Extra) -->
+                            <label class="flex justify-between items-center p-3.5 border border-neutral-200 rounded-2xl hover:bg-neutral-50 cursor-pointer transition-colors">
+                                <div class="flex gap-3 items-center">
+                                    <input type="checkbox" id="checkout-addon-1" onchange="calculateCheckoutTotal()" class="w-4.5 h-4.5 text-airbnb-500 focus:ring-airbnb-500 border-neutral-300 rounded">
+                                    <div class="max-w-[200px] sm:max-w-[250px]">
+                                        <span id="addon-1-title" class="block text-xs font-bold text-neutral-900">Llevar Gajos Adicionales</span>
+                                        <span id="addon-1-desc" class="text-[10px] text-neutral-500 block leading-tight">Un cluster premium (verde o maduro) extra por viajero.</span>
+                                    </div>
+                                </div>
+                                <span id="addon-1-badge-price" class="text-xs font-extrabold text-neutral-900 shrink-0">+$10 USD</span>
+                            </label>
+
+                            <!-- Checkbox Addon 2 (Menu de 5 tiempos / Sinfonia) -->
+                            <label class="flex justify-between items-center p-3.5 border border-neutral-200 rounded-2xl hover:bg-neutral-50 cursor-pointer transition-colors">
+                                <div class="flex gap-3 items-center">
+                                    <input type="checkbox" id="checkout-addon-2" onchange="calculateCheckoutTotal()" class="w-4.5 h-4.5 text-airbnb-500 focus:ring-airbnb-500 border-neutral-300 rounded">
+                                    <div class="max-w-[200px] sm:max-w-[250px]">
+                                        <span id="addon-2-title" class="block text-xs font-bold text-neutral-900">Menú de 5 Tiempos</span>
+                                        <span id="addon-2-desc" class="text-[10px] text-neutral-500 block leading-tight">Mejore su almuerzo al menú gourmet "Sinfonía del Banano".</span>
+                                    </div>
+                                </div>
+                                <span id="addon-2-badge-price" class="text-xs font-extrabold text-neutral-900 shrink-0">+$45 USD</span>
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <!-- Price breakdown -->
+                    <div class="bg-neutral-50 p-4 rounded-2xl border border-neutral-200 space-y-3 text-xs leading-none">
+                        <div class="flex justify-between text-neutral-600">
+                            <span>Base de la Experiencia (<span id="bd-guests">2</span> viajeros)</span>
+                            <span id="bd-base-cost">$500 USD</span>
+                        </div>
+                        <div class="flex justify-between text-neutral-600 hidden" id="bd-days-row">
+                            <span>Hospedaje Adicional (<span id="bd-days-count">0</span> días)</span>
+                            <span id="bd-days-cost">$0 USD</span>
+                        </div>
+                        <div class="flex justify-between text-neutral-600 hidden" id="bd-addon-1-row">
+                            <span id="bd-addon-1-label">Gajos Extra</span>
+                            <span id="bd-addon-1-cost">$0 USD</span>
+                        </div>
+                        <div class="flex justify-between text-neutral-600 hidden" id="bd-addon-2-row">
+                            <span id="bd-addon-2-label">Gourmet Upgrade</span>
+                            <span id="bd-addon-2-cost">$0 USD</span>
+                        </div>
+                        <div class="flex justify-between text-neutral-600">
+                            <span>Comisión de Servicio de Airbnb</span>
+                            <span class="text-emerald-600 font-bold">Sin cargos de gestión</span>
+                        </div>
+                        <div class="border-t border-neutral-200 pt-3 flex justify-between font-extrabold text-neutral-950 text-sm">
+                            <span>Total de la Experiencia</span>
+                            <span id="bd-grand-total" class="text-airbnb-600 text-base">$500 USD</span>
+                        </div>
+                    </div>
+
+                    <!-- Payment Button -->
+                    <button id="btn-pay-action" onclick="processSimulationPayment()" class="w-full bg-gradient-to-r from-airbnb-500 to-rose-600 hover:from-airbnb-600 hover:to-rose-700 text-white py-4 rounded-xl font-bold transition-all shadow-md hover:shadow-lg text-center flex items-center justify-center gap-2">
+                        <i data-lucide="lock" class="w-5 h-5"></i> Confirmar y Solicitar Reserva
+                    </button>
+
+                    <div class="text-center">
+                        <span class="text-[10px] text-neutral-400">
+                            No se realizará ningún cargo de forma inmediata. Un asesor se comunicará para validar detalles médicos y tallas para uniformes.
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- GUARANTEE AND FOOTER SECTION -->
+    <section id="seguridad" class="bg-white border-t border-neutral-200 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="flex gap-4 items-start">
+                <div class="p-3 bg-rose-50 rounded-2xl text-airbnb-500 shrink-0 border border-rose-100">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-neutral-900 text-sm">Garantía Airbnb Cover</h4>
+                    <p class="text-xs text-neutral-500 mt-1 leading-relaxed">Protección premium garantizada. Si ocurren inconvenientes climatológicos graves o cancelaciones logísticas del anfitrión, reubicamos tu fecha o te devolvemos el 100%.</p>
+                </div>
+            </div>
+            <div class="flex gap-4 items-start">
+                <div class="p-3 bg-emerald-50 rounded-2xl text-emerald-600 shrink-0 border border-emerald-100">
+                    <i data-lucide="heart" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-neutral-900 text-sm">Turismo Ético Certificado</h4>
+                    <p class="text-xs text-neutral-500 mt-1 leading-relaxed">La totalidad del financiamiento se distribuye equitativamente a las familias rurales del Magdalena, aportando directamente al comercio de origen y la preservación ecológica.</p>
+                </div>
+            </div>
+            <div class="flex gap-4 items-start">
+                <div class="p-3 bg-blue-50 rounded-2xl text-blue-600 shrink-0 border border-blue-100">
+                    <i data-lucide="refresh-cw" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-neutral-900 text-sm">Cancelación Flexible</h4>
+                    <p class="text-xs text-neutral-500 mt-1 leading-relaxed">Cancelación completamente gratuita y reprogramación flexible informando hasta con 48 horas de anticipación a la fecha inicial pactada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AIRBNB REAL-STYLE FOOTER -->
+    <footer class="bg-neutral-100 text-neutral-700 py-12 border-t border-neutral-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-6 text-xs text-neutral-500">
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <span class="font-bold text-neutral-900">&copy; 2026 Airbnb, Inc.</span>
+                <span>•</span>
+                <a href="#" class="hover:underline">Fincas Magdalena Sostenible</a>
+                <span>•</span>
+                <a href="#" class="hover:underline">Políticas de Privacidad</a>
+                <span>•</span>
+                <a href="#" class="hover:underline">Condiciones de Servicio</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="flex items-center gap-1"><i data-lucide="globe" class="w-4 h-4"></i> Español (CO)</span>
+                <span class="flex items-center gap-1"><i data-lucide="dollar-sign" class="w-4 h-4"></i> USD</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE LOADING OVERLAY -->
+    <div id="payment-loading-overlay" class="fixed inset-0 bg-neutral-950/80 backdrop-blur-md z-50 flex flex-col items-center justify-center p-4 hidden">
+        <div class="max-w-xs w-full text-center space-y-6">
+            <!-- Spinner -->
+            <div class="relative w-20 h-20 mx-auto">
+                <div class="absolute inset-0 rounded-full border-4 border-neutral-800"></div>
+                <div class="absolute inset-0 rounded-full border-4 border-t-airbnb-500 border-r-airbnb-500 animate-spin"></div>
+            </div>
+            <div class="space-y-2 text-white">
+                <h3 class="text-lg font-bold" id="loading-title">Procesando pago seguro...</h3>
+                <p class="text-xs text-neutral-400" id="loading-desc">Conectando con la pasarela de pagos segura de Airbnb. Por favor, no cierres esta ventana.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOOKING CONFIRMED MODAL -->
+    <div id="booking-success-modal" class="fixed inset-0 bg-neutral-950/60 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-8 text-center space-y-6 shadow-2xl scale-95 transition-transform duration-300 transform" id="success-modal-container">
+            <!-- Success Badge Icon -->
+            <div class="w-20 h-20 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center mx-auto shadow-inner">
+                <i data-lucide="check-circle" class="w-10 h-10"></i>
+            </div>
+            <div class="space-y-4">
+                <span class="bg-emerald-50 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">¡Solicitud Procesada!</span>
+                <h3 class="font-extrabold text-2xl text-neutral-900 leading-snug">¡Tu experiencia está agendada!</h3>
+                <p class="text-neutral-500 text-sm leading-relaxed font-light">
+                    Hemos verificado el canal de pago seguro y registrado tu solicitud. A continuación, encontrarás los detalles de tu reserva:
+                </p>
+                
+                <!-- Ticket Information Card -->
+                <div class="bg-neutral-50 border border-neutral-200 rounded-2xl p-5 text-left space-y-2 text-xs">
+                    <p class="text-neutral-600"><strong class="text-neutral-950">Anfitrión:</strong> <span id="ticket-host" class="font-semibold"></span></p>
+                    <p class="text-neutral-600"><strong class="text-neutral-950">Experiencia:</strong> <span id="ticket-exp-title" class="font-semibold"></span></p>
+                    <p class="text-neutral-600"><strong class="text-neutral-950">Viajero Principal:</strong> <span id="ticket-name" class="font-semibold"></span></p>
+                    <p class="text-neutral-600"><strong class="text-neutral-950">Contacto:</strong> <span id="ticket-contact" class="font-semibold"></span></p>
+                    <p class="text-neutral-600"><strong class="text-neutral-950">Fecha de Actividad:</strong> <span id="ticket-date" class="font-semibold"></span></p>
+                    <p class="text-neutral-600"><strong class="text-neutral-950">Cupos Reservados:</strong> <span id="ticket-guests" class="font-semibold"></span></p>
+                    <p id="ticket-days-row" class="text-neutral-600 hidden"><strong class="text-neutral-950">Días Adicionales de Estancia:</strong> <span id="ticket-days" class="font-semibold font-mono"></span></p>
+                    <p id="ticket-sello-row" class="text-neutral-600 hidden"><strong class="text-neutral-950">Identificación Sello Sombrero:</strong> <span id="ticket-sello" class="font-semibold font-mono"></span></p>
+                    <div class="border-t border-neutral-200 pt-2 flex justify-between font-bold text-neutral-950 text-sm">
+                        <span>Total Cifrado:</span>
+                        <span id="ticket-total-cost" class="text-airbnb-600"></span>
+                    </div>
+                </div>
+
+                <p class="text-[11px] text-neutral-400 font-light leading-snug">
+                    El anfitrión se pondrá en contacto contigo de forma directa vía WhatsApp y correo electrónico para coordinar detalles logísticos de acceso o requisitos médicos y dietarios específicos.
+                </p>
+            </div>
+            
+            <button onclick="closeSuccessModal()" class="w-full bg-airbnb-500 hover:bg-airbnb-600 text-white py-3.5 rounded-2xl font-bold transition-all shadow-md">
+                Ver otras experiencias del Magdalena
+            </button>
+        </div>
+    </div>
+
+
+    <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+    <script>
+        // Database of Official Experiences
+        const experiencesData = {
+            banano: {
+                id: "banano",
+                title: "Del Campo al Mundo: Vive el proceso real del banano de exportación",
+                category: "Ecoturismo Agrícola • Finca la Dos",
+                price: 250,
+                rating: "4.98 (72 reviews)",
+                duration: "6 Horas",
+                location: "Finca la Dos, Zona Bananera",
+                host: "Alberto Cueto Estrada",
+                image: "https://images.unsplash.com/photo-1528825871115-3581a5387919?q=80&w=800&auto=format&fit=crop",
+                isMondayOnly: true,
+                maxGuests: 5,
+                addons: {
+                    opt1: { label: "Llevar Gajos Adicionales (+ $10 c/u)", price: 10, perPerson: true, labelBase: "Llevar Gajos Adicionales", desc: "Un cluster premium (verde o maduro) extra para compartir en casa." },
+                    opt2: { label: "Menú de 5 Tiempos (+ $45 c/u)", price: 45, perPerson: true, labelBase: "Menú Gourmet de 5 Tiempos", desc: "Mejore su almuerzo al menú gastronómico 'Sinfonía del Banano'." }
+                }
+            },
+            cafe_completo: {
+                id: "cafe_completo",
+                title: "Cosecha Tu Propio Café: Pasantía Técnico-Cultural de Ciclo Completo",
+                category: "Pasantía de Café • Finca El Paraíso",
+                price: 500,
+                rating: "4.99 (88 reviews)",
+                duration: "7 Días / 6 Noches",
+                location: "Sierra Nevada de Santa Marta",
+                host: "Familia Campesina El Paraíso",
+                image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=800&auto=format&fit=crop",
+                isMondayOnly: false,
+                maxGuests: 4,
+                addons: {
+                    opt1: { label: "Alimentación Premium (+ $25 c/u)", price: 25, perPerson: true, labelBase: "Gastronomía Exclusiva", desc: "Inclusión de snacks de tueste y postres típicos de la abuela." },
+                },
+                extraDayPrice: 70
+            },
+            campesino_un_dia: {
+                id: "campesino_un_dia",
+                title: "Un Día en la Vida del Campesino de la Sierra Nevada",
+                category: "Inmersión Cultural • Finca El Paraíso",
+                price: 200,
+                rating: "4.95 (54 reviews)",
+                duration: "2 Días / 1 Noche",
+                location: "Sierra Nevada de Santa Marta",
+                host: "Familia Campesina El Paraíso",
+                image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
+                isMondayOnly: false,
+                maxGuests: 6,
+                addons: {
+                    opt1: { label: "Bolsa de café (+ $30 c/u)", price: 30, perPerson: true, labelBase: "Bolsa de Café", desc: "Café excelso tostado y molido de la marca de la finca." },
+                    opt2: { label: "Caja de Souvenirs Premium (+ $15 c/u)", price: 15, perPerson: true, labelBase: "Caja de Souvenirs Premium", desc: "Empaque oficial con muestra de café tostado, panela orgánica y cítricos de la huerta." }
+                },
+                extraDayPrice: 40
+            }
+        };
+
+        // Exchange Rates relative to 1 USD
+        const currencyRates = {
+            USD: { symbol: "$", rate: 1, text: "USD" },
+            COP: { symbol: "Col$ ", rate: 4000, text: "COP" },
+            EUR: { symbol: "€", rate: 0.92, text: "EUR" },
+            MXN: { symbol: "Mex$ ", rate: 17.5, text: "MXN" },
+            CAD: { symbol: "Can$ ", rate: 1.36, text: "CAD" }
+        };
+
+        // State Management
+        let selectedExp = null;
+        let checkoutGuests = 2;
+        let paraiseDays = 0; // Days of additional stay
+
+        // Initialize Icons
+        lucide.createIcons();
+
+        // On window load: check and parse incoming parameters from external Lands/Sources
+        window.onload = function() {
+            parseQueryParameters();
+            updateGeneratedUrl();
+        };
+
+        // Dynamic URL Builder for Developers/Landings
+        function updateGeneratedUrl() {
+            const exp = document.getElementById('gen-exp').value;
+            const guests = document.getElementById('gen-guests').value;
+            const days = document.getElementById('gen-days').value;
+            const add1 = document.getElementById('gen-addon-1').checked;
+            const add2 = document.getElementById('gen-addon-2').checked;
+
+            const basePath = window.location.pathname.split('/').pop() || 'index.html';
+            let generatedQuery = `${basePath}?exp=${exp}&guests=${guests}`;
+            if (parseInt(days) > 0) generatedQuery += `&days=${days}`;
+            if (add1) generatedQuery += `&addon1=true`;
+            if (add2) generatedQuery += `&addon2=true`;
+
+            document.getElementById('generated-url-code').innerText = generatedQuery;
+        }
+
+        function copyGeneratedLink() {
+            const codeText = document.getElementById('generated-url-code').innerText;
+            // Full URL conversion
+            const fullUrl = window.location.origin + window.location.pathname.replace(/[^\/]*$/, codeText);
+            
+            // Clipboard fallback as specified
+            const tempInput = document.createElement('input');
+            tempInput.value = fullUrl;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            showCustomNotification("Enlace completo de integración copiado", "success");
+        }
+
+        function testGeneratedLink() {
+            const codeText = document.getElementById('generated-url-code').innerText;
+            window.location.search = codeText.substring(codeText.indexOf('?'));
+        }
+
+        // Real Deep Link Parser to connect Landing Pages directly to Checkout
+        function parseQueryParameters() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const expParam = urlParams.get('exp');
+            
+            if (expParam && experiencesData[expParam]) {
+                selectedExp = experiencesData[expParam];
+                
+                // Guests Param
+                const guestsParam = parseInt(urlParams.get('guests')) || 2;
+                checkoutGuests = Math.min(Math.max(guestsParam, 1), selectedExp.maxGuests);
+
+                // Additional Days
+                const daysParam = parseInt(urlParams.get('days')) || 0;
+                paraiseDays = daysParam;
+
+                // Addons State
+                const add1Param = urlParams.get('addon1') === 'true';
+                const add2Param = urlParams.get('addon2') === 'true';
+
+                // Switch views automatically
+                showCheckoutMode();
+
+                // Hydrate inputs inside checkout
+                document.getElementById('checkout-addon-1').checked = add1Param;
+                document.getElementById('checkout-addon-2').checked = add2Param;
+                
+                // If specific fields exist in URL
+                if (urlParams.get('name')) document.getElementById('traveler-name').value = urlParams.get('name');
+                if (urlParams.get('email')) document.getElementById('traveler-email').value = urlParams.get('email');
+                if (urlParams.get('phone')) document.getElementById('traveler-phone').value = urlParams.get('phone');
+                if (urlParams.get('date')) document.getElementById('traveler-date').value = urlParams.get('date');
+                if (urlParams.get('overolName')) document.getElementById('overol-name-input').value = urlParams.get('overolName');
+                if (urlParams.get('overolSize')) document.getElementById('overol-size-select').value = urlParams.get('overolSize');
+
+                // Display success indicator
+                document.getElementById('integration-banner').classList.remove('hidden');
+
+                calculateCheckoutTotal();
+            } else {
+                showBrowseMode();
+                setDefaultMondayDate();
+            }
+        }
+
+        // Set date to next monday by default (Finca La Dos constraint)
+        function setDefaultMondayDate() {
+            const today = new Date();
+            const dayOfWeek = today.getDay(); 
+            let daysUntilNextMonday = (1 - dayOfWeek + 7) % 7;
+            if (daysUntilNextMonday === 0) daysUntilNextMonday = 7; 
+            today.setDate(today.getDate() + daysUntilNextMonday);
+            const nextMondayStr = today.toISOString().split('T')[0];
+            document.getElementById('traveler-date').value = nextMondayStr;
+        }
+
+        // Navigation Views
+        function showBrowseMode() {
+            document.getElementById('browse-mode-view').classList.remove('hidden');
+            document.getElementById('checkout-mode-view').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showCheckoutMode() {
+            document.getElementById('browse-mode-view').classList.add('hidden');
+            document.getElementById('checkout-mode-view').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (selectedExp) {
+                // Set Header Details
+                document.getElementById('checkout-exp-img').src = selectedExp.image;
+                document.getElementById('checkout-exp-category').innerText = selectedExp.category;
+                document.getElementById('checkout-exp-title').innerText = selectedExp.title;
+                document.getElementById('checkout-exp-rating').innerText = selectedExp.rating;
+                document.getElementById('checkout-exp-duration').innerText = selectedExp.duration;
+                document.getElementById('checkout-exp-location').innerText = selectedExp.location;
+
+                // Handle Monday Warning for Finca La Dos
+                const monWarning = document.getElementById('monday-special-warning');
+                if (selectedExp.isMondayOnly) {
+                    monWarning.classList.remove('hidden');
+                    document.getElementById('traveler-date').addEventListener('change', checkMondayConstraint);
+                } else {
+                    monWarning.classList.add('hidden');
+                    document.getElementById('traveler-date').removeEventListener('change', checkMondayConstraint);
+                }
+
+                // Customizer blocks togglers (Finca La Dos Overol / Sombrero)
+                const customizer = document.getElementById('garrucha-customizer-block');
+                if (selectedExp.id === 'banano') {
+                    customizer.classList.remove('hidden');
+                } else {
+                    customizer.classList.add('hidden');
+                }
+
+                // Days selection block toggler (Finca El Paraíso)
+                const daysBlock = document.getElementById('paraise-days-block');
+                if (selectedExp.id === 'cafe_completo' || selectedExp.id === 'campesino_un_dia') {
+                    daysBlock.classList.remove('hidden');
+                    document.getElementById('paraise-days-desc').innerText = `Día adicional cuesta $${selectedExp.extraDayPrice} USD`;
+                } else {
+                    daysBlock.classList.add('hidden');
+                }
+
+                // Configure Checkbox Labels dynamically according to experience
+                document.getElementById('addon-1-title').innerText = selectedExp.addons.opt1.labelBase;
+                document.getElementById('addon-1-desc').innerText = selectedExp.addons.opt1.desc;
+                document.getElementById('addon-1-badge-price').innerText = `+$${selectedExp.addons.opt1.price} USD`;
+
+                document.getElementById('addon-2-title').innerText = selectedExp.addons.opt2.labelBase;
+                document.getElementById('addon-2-desc').innerText = selectedExp.addons.opt2.desc;
+                document.getElementById('addon-2-badge-price').innerText = `+$${selectedExp.addons.opt2.price} USD`;
+
+                // Guest limit text
+                document.getElementById('checkout-guest-helper').innerText = `Máximo de ${selectedExp.maxGuests} personas`;
+
+                // Set initial counts
+                document.getElementById('checkout-guest-count').innerText = checkoutGuests;
+                document.getElementById('paraise-days-count').innerText = paraiseDays;
+
+                calculateCheckoutTotal();
+            }
+        }
+
+        // Experience Selected Action
+        function selectExperience(expId) {
+            selectedExp = experiencesData[expId];
+            checkoutGuests = 2; // Default starting guests
+            paraiseDays = 0; // Default extra days
+            // Uncheck previous checkboxes
+            document.getElementById('checkout-addon-1').checked = false;
+            document.getElementById('checkout-addon-2').checked = false;
+
+            showCheckoutMode();
+        }
+
+        // Date constraint checker
+        function checkMondayConstraint(e) {
+            const dateVal = e.target.value;
+            if (!dateVal) return;
+            const date = new Date(dateVal + "T00:00:00");
+            const warning = document.getElementById('monday-special-warning');
+            if (date.getDay() !== 1) { // 1 = Monday
+                warning.innerText = "¡Atención! La cosecha en Finca La Dos se realiza exclusivamente los lunes. Por favor selecciona un día lunes para continuar.";
+                warning.classList.remove('text-neutral-500');
+                warning.classList.add('text-rose-600', 'font-extrabold');
+            } else {
+                warning.innerText = "Fecha correcta. El lunes es día de cosecha real en la finca.";
+                warning.classList.remove('text-rose-600', 'font-extrabold');
+                warning.classList.add('text-neutral-500', 'font-semibold');
+            }
+        }
+
+        // Change guest count
+        function changeCheckoutGuests(amount) {
+            if (!selectedExp) return;
+            checkoutGuests += amount;
+            if (checkoutGuests < 1) checkoutGuests = 1;
+            if (checkoutGuests > selectedExp.maxGuests) checkoutGuests = selectedExp.maxGuests;
+
+            document.getElementById('checkout-guest-count').innerText = checkoutGuests;
+            calculateCheckoutTotal();
+        }
+
+        // Change additional days
+        function changeParaiseDays(amount) {
+            paraiseDays += amount;
+            if (paraiseDays < 0) paraiseDays = 0;
+            if (paraiseDays > 15) paraiseDays = 15; // standard cap
+
+            document.getElementById('paraise-days-count').innerText = paraiseDays;
+            calculateCheckoutTotal();
+        }
+
+        // Real-Time Total Calculation and Currency Conversion
+        function calculateCheckoutTotal() {
+            if (!selectedExp) return;
+
+            const baseUnitPrice = selectedExp.price;
+            const addon1Checked = document.getElementById('checkout-addon-1').checked;
+            const addon2Checked = document.getElementById('checkout-addon-2').checked;
+
+            // Currency setup
+            const currencyKey = document.getElementById('currency-select').value;
+            const activeCurrency = currencyRates[currencyKey];
+
+            // 1. Base Cost
+            const baseCostUsd = checkoutGuests * baseUnitPrice;
+
+            // 2. Extra Days Cost
+            let daysCostUsd = 0;
+            if (selectedExp.extraDayPrice && paraiseDays > 0) {
+                daysCostUsd = paraiseDays * selectedExp.extraDayPrice;
+            }
+
+            // 3. Addon 1 Cost
+            let addon1CostUsd = 0;
+            if (addon1Checked) {
+                const addonDetails = selectedExp.addons.opt1;
+                addon1CostUsd = addonDetails.perPerson ? (checkoutGuests * addonDetails.price) : addonDetails.price;
+            }
+
+            // 4. Addon 2 Cost
+            let addon2CostUsd = 0;
+            if (addon2Checked) {
+                const addonDetails = selectedExp.addons.opt2;
+                addon2CostUsd = addonDetails.perPerson ? (checkoutGuests * addonDetails.price) : addonDetails.price;
+            }
+
+            // Calculations in USD
+            const grandTotalUsd = baseCostUsd + daysCostUsd + addon1CostUsd + addon2CostUsd;
+
+            // Conversion rates application
+            const convert = (usdAmount) => {
+                const val = usdAmount * activeCurrency.rate;
+                // Formatting decimals or integers depending on currency (COP vs EUR/USD)
+                if (currencyKey === 'COP') {
+                    return activeCurrency.symbol + Math.round(val).toLocaleString('es-CO');
+                } else {
+                    return activeCurrency.symbol + val.toFixed(2);
+                }
+            };
+
+            // Update UI fields
+            document.getElementById('selected-currency-label').innerText = activeCurrency.text;
+            document.getElementById('bd-guests').innerText = checkoutGuests;
+            document.getElementById('bd-base-cost').innerText = convert(baseCostUsd);
+
+            // Handle days row
+            const daysRow = document.getElementById('bd-days-row');
+            if (paraiseDays > 0) {
+                document.getElementById('bd-days-count').innerText = paraiseDays;
+                document.getElementById('bd-days-cost').innerText = convert(daysCostUsd);
+                daysRow.classList.remove('hidden');
+            } else {
+                daysRow.classList.add('hidden');
+            }
+
+            // Handle addon 1 row
+            const addon1Row = document.getElementById('bd-addon-1-row');
+            if (addon1Checked) {
+                document.getElementById('bd-addon-1-label').innerText = selectedExp.addons.opt1.labelBase;
+                document.getElementById('bd-addon-1-cost').innerText = convert(addon1CostUsd);
+                addon1Row.classList.remove('hidden');
+            } else {
+                addon1Row.classList.add('hidden');
+            }
+
+            // Handle addon 2 row
+            const addon2Row = document.getElementById('bd-addon-2-row');
+            if (addon2Checked) {
+                document.getElementById('bd-addon-2-label').innerText = selectedExp.addons.opt2.labelBase;
+                document.getElementById('bd-addon-2-cost').innerText = convert(addon2CostUsd);
+                addon2Row.classList.remove('hidden');
+            } else {
+                addon2Row.classList.add('hidden');
+            }
+
+            // Grand Total Updates
+            const totalStr = convert(grandTotalUsd);
+            document.getElementById('bd-grand-total').innerText = totalStr + ` ${activeCurrency.text}`;
+            document.getElementById('aside-price-total').innerText = totalStr;
+
+            updateCheckoutBadge();
+        }
+
+        // Live Customizer badge updates
+        function updateCheckoutBadge() {
+            const inputVal = document.getElementById('overol-name-input').value.trim();
+            const sizeVal = document.getElementById('overol-size-select').value;
+
+            const badgePreview = document.getElementById('overol-badge-preview');
+            const sizeBadge = document.getElementById('overol-size-badge');
+
+            if (badgePreview) {
+                badgePreview.innerText = inputVal !== "" ? `VIAJERO ${inputVal.substring(0, 16).toUpperCase()}` : "VIAJERO AVENTURERO";
+            }
+            if (sizeBadge) {
+                sizeBadge.innerText = `Talla ${sizeVal}`;
+            }
+        }
+
+        // Credit Card validation / formatting
+        function detectCardType(input) {
+            let cleanVal = input.value.replace(/\D/g, '');
+            let formattedVal = "";
+            for (let i = 0; i < cleanVal.length; i++) {
+                if (i > 0 && i % 4 === 0) {
+                    formattedVal += " ";
+                }
+                formattedVal += cleanVal[i];
+            }
+            input.value = formattedVal;
+
+            const iconPlaceholder = document.getElementById('card-icon-placeholder');
+            if (cleanVal.startsWith('4')) {
+                iconPlaceholder.innerHTML = `<img src="https://cdnjs.cloudflare.com/ajax/libs/payment-font/1.3.0/png/flat/visa.png" class="h-5">`;
+            } else if (cleanVal.startsWith('5')) {
+                iconPlaceholder.innerHTML = `<img src="https://cdnjs.cloudflare.com/ajax/libs/payment-font/1.3.0/png/flat/mastercard.png" class="h-5">`;
+            } else if (cleanVal.startsWith('3')) {
+                iconPlaceholder.innerHTML = `<img src="https://cdnjs.cloudflare.com/ajax/libs/payment-font/1.3.0/png/flat/amex.png" class="h-5">`;
+            } else {
+                iconPlaceholder.innerHTML = `<i data-lucide="credit-card" class="w-5 h-5"></i>`;
+                lucide.createIcons();
+            }
+        }
+
+        // Simulation Payment Processor with state transitions
+        function processSimulationPayment() {
+            const name = document.getElementById('traveler-name');
+            const email = document.getElementById('traveler-email');
+            const phone = document.getElementById('traveler-phone');
+            const date = document.getElementById('traveler-date');
+            
+            const holder = document.getElementById('card-holder');
+            const number = document.getElementById('card-number');
+            const expiry = document.getElementById('card-expiry');
+            const cvc = document.getElementById('card-cvc');
+
+            const mandatory = [name, email, phone, date, holder, number, expiry, cvc];
+            let hasErrors = false;
+
+            mandatory.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('border-rose-500', 'focus:ring-rose-500');
+                    hasErrors = true;
+                } else {
+                    field.classList.remove('border-rose-500', 'focus:ring-rose-500');
+                }
+            });
+
+            if (hasErrors) {
+                const firstEmpty = mandatory.find(field => !field.value.trim());
+                if (firstEmpty) firstEmpty.focus();
+                showCustomNotification("Por favor diligencia todos los campos con asteriscos (*).", "error");
+                return;
+            }
+
+            // Constraint check for Monday only in Finca La Dos
+            if (selectedExp.isMondayOnly) {
+                const dateObj = new Date(date.value + "T00:00:00");
+                if (dateObj.getDay() !== 1) {
+                    date.focus();
+                    showCustomNotification("La experiencia de banano solo opera los días lunes de cosecha real.", "error");
+                    return;
+                }
+            }
+
+            // Trigger secure checkout simulator overlay steps
+            const overlay = document.getElementById('payment-loading-overlay');
+            const loadingTitle = document.getElementById('loading-title');
+            const loadingDesc = document.getElementById('loading-desc');
+
+            overlay.classList.remove('hidden');
+
+            setTimeout(() => {
+                loadingTitle.innerText = "Cifrando detalles de reserva SSL...";
+                loadingDesc.innerText = "Estableciendo conexión encriptada de extremo a extremo con Airbnb Pay...";
+            }, 1000);
+
+            setTimeout(() => {
+                loadingTitle.innerText = "Sincronizando con el anfitrión...";
+                loadingDesc.innerText = `Confirmando disponibilidad para ${checkoutGuests} personas directamente con ${selectedExp.host}...`;
+            }, 2500);
+
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+                triggerSuccessReceipt();
+            }, 4000);
+        }
+
+        // Hydrate and display success receipt
+        function triggerSuccessReceipt() {
+            document.getElementById('ticket-host').innerText = selectedExp.host;
+            document.getElementById('ticket-exp-title').innerText = selectedExp.title;
+            document.getElementById('ticket-name').innerText = document.getElementById('traveler-name').value;
+            document.getElementById('ticket-contact').innerText = `${document.getElementById('traveler-email').value} / ${document.getElementById('traveler-phone').value}`;
+            document.getElementById('ticket-date').innerText = document.getElementById('traveler-date').value;
+            document.getElementById('ticket-guests').innerText = `${checkoutGuests} personas`;
+            document.getElementById('ticket-total-cost').innerText = document.getElementById('bd-grand-total').innerText;
+
+            // Extra stay handling
+            const ticketDaysRow = document.getElementById('ticket-days-row');
+            if (paraiseDays > 0) {
+                document.getElementById('ticket-days').innerText = `+${paraiseDays} días de alojamiento`;
+                ticketDaysRow.classList.remove('hidden');
+            } else {
+                ticketDaysRow.classList.add('hidden');
+            }
+
+            // Sello Hat customizer handling
+            const ticketSelloRow = document.getElementById('ticket-sello-row');
+            if (selectedExp.id === 'banano') {
+                const imprintName = document.getElementById('overol-name-input').value.trim() || "VIAJERO AVENTURERO";
+                const sizeValue = document.getElementById('overol-size-select').value;
+                document.getElementById('ticket-sello').innerText = `"${imprintName.toUpperCase()}" [Talla: ${sizeValue}]`;
+                ticketSelloRow.classList.remove('hidden');
+            } else {
+                ticketSelloRow.classList.add('hidden');
+            }
+
+            // Reveal confirmed modal
+            const modal = document.getElementById('booking-success-modal');
+            const container = document.getElementById('success-modal-container');
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+                container.classList.remove('scale-95');
+                container.classList.add('scale-100');
+            }, 50);
+
+            lucide.createIcons();
+        }
+
+        function closeSuccessModal() {
+            const modal = document.getElementById('booking-success-modal');
+            const container = document.getElementById('success-modal-container');
+
+            modal.classList.add('opacity-0');
+            container.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('opacity-100');
+                clearQueryString();
+                showBrowseMode();
+            }, 300);
+        }
+
+        function clearQueryString() {
+            window.history.pushState({}, document.title, window.location.pathname);
+            document.getElementById('integration-banner').classList.add('hidden');
+        }
+
+        // Custom in-page non-obstructive notifications (No browser alert)
+        function showCustomNotification(message, type = "success") {
+            const noticeDiv = document.createElement('div');
+            noticeDiv.className = `fixed bottom-5 right-5 z-50 p-4 rounded-2xl shadow-xl flex items-center gap-3 border transition-all transform translate-y-5 opacity-0 ${
+                type === 'error' ? 'bg-rose-50 border-rose-200 text-rose-950' : 'bg-emerald-50 border-emerald-200 text-emerald-950'
+            }`;
+
+            noticeDiv.innerHTML = `
+                <div class="p-1.5 rounded-full ${type === 'error' ? 'bg-rose-100 text-rose-800' : 'bg-emerald-100 text-emerald-800'}">
+                    <i data-lucide="${type === 'error' ? 'x-circle' : 'check-circle'}" class="w-5 h-5"></i>
+                </div>
+                <span class="text-xs sm:text-sm font-semibold">${message}</span>
+            `;
+
+            document.body.appendChild(noticeDiv);
+            lucide.createIcons();
+
+            setTimeout(() => {
+                noticeDiv.classList.remove('opacity-0', 'translate-y-5');
+                noticeDiv.classList.add('opacity-100', 'translate-y-0');
+            }, 10);
+
+            setTimeout(() => {
+                noticeDiv.classList.add('opacity-0', 'translate-y-5');
+                setTimeout(() => {
+                    noticeDiv.remove();
+                }, 300);
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
